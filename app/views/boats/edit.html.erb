@@ -1,2 +1,12 @@
 <h1>Boats#edit</h1>
-<p>Find me in app/views/boats/edit.html.erb</p>
+
+
+<%= form_for @boat do |t| %>
+	<h3><%= t.label :name %></h3>
+	<%= t.text_field :name %>
+	<h3><%= t.label :number_of_containers %></h3>
+	<%= t.text_field :containermax %>
+	<h3><%= t.label :location %></h3>
+	<%= t.text_field :location %>
+	<%= t.submit :update %>
+<% end %>

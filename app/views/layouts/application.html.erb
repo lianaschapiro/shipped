@@ -7,8 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<% if current_user %>
+		<nav>
+			<ul>
+				<li><a href="/log-out">LOG OUT</a></li>
+				<li><%= link_to "MY ACCOUNT", user_path(current_user)  %></li>
+				<li><%= link_to "ALL SHIPMENTS", boats_path %></li>
+			</ul>
+		</nav>
+		<% else %>
+				<nav>
+				</nav>
+		<% end %>
+		<h1>SHIPPED</h1>
+	</header>
 
-<%= yield %>
+	<% if flash[:notice] %>
+		<p id="flash"><%= flash[:notice] %></p>
+	<% end %>
+
+	<div class="main">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

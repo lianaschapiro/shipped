@@ -1,2 +1,51 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!-- Heading showing which user's profile we are on -->
+<% if @user == current_user %>
+	<h2>My Profile</h2>
+<% else %>
+	<h2><%= @user.username %>'s Profile</h2>
+<% end %>
+
+<!-- User's information -->
+	<h3>Name:</h3><%= @user.fname %> <%= @user.lname %>
+	<h3>Email:</h3><%= @user.email %>
+	<h3>Member Since:</h3><%= @user.created_at.strftime(" %B %d, %Y")%>
+
+<!-- User's boats-->
+<% if @user == current_user %>
+	<h2>My Boats</h2>
+<% else %>
+	<h2><%= @user.username %>'s Boats</h2>
+<% end %>
+	<hr>
+<!-- If user has boats, it will list them -->
+<% if @user.boats != [] %>
+	<% @user.boats.each do |t| %>
+		<p>Boat Name:<%= t.name %></p>
+		<p># of Containers: <%= t.containermax %></p>
+		<p>Location: <%= t.location %></p>
+		<p>Shipment Owner: <%= t.user.username %></p>
+		<!-- User can only edit / delete boats on their own profile page -->
+		<% if @user == current_user %>
+			<%= link_to "Edit Boat", edit_boat_path(t) %>
+			<%= link_to "Delete Boat", t, method: :delete %>
+			<hr>
+		<% end %>
+	<% end %>
+<!-- If there are no boats, it will say so -->
+<% else %>
+	<p>No boats yet...</p>
+<% end %>
+
+<!-- User can only add boats on their own profile page -->
+<% if @user == current_user %>
+	<h2>Add New Boat</h2>
+	<%= form_for @boat do |t| %>
+		<%= t.label :name %>
+		<%= t.text_field :name %>
+		<%= t.label :number_of_containers %>
+		<%= t.text_field :containermax %>
+		<%= t.label :location %>
+		<%= t.text_field :location %>
+		<%= t.submit :create %>
+	<% end %>
+<%end%>
