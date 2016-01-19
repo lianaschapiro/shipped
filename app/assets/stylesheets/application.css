@@ -18,9 +18,14 @@
 	padding: 0;
 }
 
+body {
+	background-image: url("/assets/shipping.jpg");
+	background-size: 100%;
+}
+
 header {
 	text-align: center;
-	background-color: pink;
+	background-color: rgba(255, 255, 255, .8);
 	height: 75px;
 }
 
@@ -43,8 +48,15 @@ nav a {
 	text-decoration: none;
 }
 
+hr {
+ width: 70%;
+ margin: 10px auto 10px;
+}
+
 .main {
-	width: 90%;
+	width: 50%;
+	padding: 15px;
 	margin: 20px auto;
 	text-align: center;
+	background-color: rgba(255, 255, 255, .8);
 }

@@ -1,2 +1,50 @@
-<h1>Boats#show</h1>
-<p>Find me in app/views/boats/show.html.erb</p>
+<h2><%= @boat.name %> Details</h2>
+
+		<p><b>Name:</b> <%= @boat.name %></p>
+		<p><b># of Containers:</b> <%= @boat.containermax %></p>
+		<p><b>Location:</b> <%= @boat.location %></p>
+		<p><b>Boat Owner:</b> <%= @boat.user.username %></p>
+		<!-- User can only edit / delete their own boats -->
+		<% if @boat.user == current_user %>
+			<%= link_to "Edit Boat", edit_boat_path(@boat) %>
+				&#9875;
+			<%= link_to "Delete Boat", @boat, method: :delete %>
+			<hr>
+		<% end %>
+
+<h2>Jobs:</h2>
+	<% if @boat.jobs != [] %>
+		<% @boat.jobs.each do |t| %>
+			<%= t.name %>
+			<%= link_to "Show Job Details", boat_job_path(t) %>
+			<% if @boat.user == current_user %>
+				<%= link_to "Edit Job", edit_boat_job_path(@post, t) %>
+				&#9875;
+			<%= link_to "Delete Job", boat_job_path(@boat, t), method: :delete %>
+			<hr>
+			<% end %>
+		<%end %>
+	<% else %>
+		<p>No current jobs</p>
+		<hr>
+	<% end %>
+
+	<h2>Create New Job</h2>
+		<%= form_for [@boat, @job] do |t| %>
+			<%= t.label :name %>
+			<%= t.text_field :name %>
+			<br>
+			<%= t.label :cost %>
+			<%= t.text_field :cost %>
+			<br>
+			<%= t.label :description %>
+			<%= t.text_field :description %>
+			<br>
+			<%= t.label :origin %>
+			<%= t.text_field :origin %>
+			<br>
+			<%= t.label :destination %>
+			<%= t.text_field :destination %>
+			<br>
+			<%= t.submit :create, value: :create %>
+		<% end %>

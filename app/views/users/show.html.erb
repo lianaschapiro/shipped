@@ -6,9 +6,10 @@
 <% end %>
 
 <!-- User's information -->
-	<h3>Name:</h3><%= @user.fname %> <%= @user.lname %>
-	<h3>Email:</h3><%= @user.email %>
-	<h3>Member Since:</h3><%= @user.created_at.strftime(" %B %d, %Y")%>
+	<p><b>Name:</b> <%= @user.fname %> <%= @user.lname %><p>
+	<p><b>Email:</b> <%= @user.email %></p>
+	<p><b>Member Since:</b> <%= @user.created_at.strftime(" %B %d, %Y")%></p>
+	<hr>
 
 <!-- User's boats-->
 <% if @user == current_user %>
@@ -16,17 +17,19 @@
 <% else %>
 	<h2><%= @user.username %>'s Boats</h2>
 <% end %>
-	<hr>
 <!-- If user has boats, it will list them -->
 <% if @user.boats != [] %>
 	<% @user.boats.each do |t| %>
-		<p>Boat Name:<%= t.name %></p>
-		<p># of Containers: <%= t.containermax %></p>
-		<p>Location: <%= t.location %></p>
-		<p>Shipment Owner: <%= t.user.username %></p>
+		<p><b>Boat Name:</b> <%= t.name %></p>
+		<p><b># of Containers:</b> <%= t.containermax %></p>
+		<p><b>Location:</b> <%= t.location %></p>
+		<p><b>Boat Owner:</b> <%= t.user.username %></p>
+			<%= link_to "Show Details", boat_path(t) %>
 		<!-- User can only edit / delete boats on their own profile page -->
 		<% if @user == current_user %>
+				&#9875;
 			<%= link_to "Edit Boat", edit_boat_path(t) %>
+				&#9875;
 			<%= link_to "Delete Boat", t, method: :delete %>
 			<hr>
 		<% end %>
@@ -42,10 +45,13 @@
 	<%= form_for @boat do |t| %>
 		<%= t.label :name %>
 		<%= t.text_field :name %>
+		<br>
 		<%= t.label :number_of_containers %>
 		<%= t.text_field :containermax %>
+		<br>
 		<%= t.label :location %>
 		<%= t.text_field :location %>
+		<br>
 		<%= t.submit :create %>
 	<% end %>
 <%end%>

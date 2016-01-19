@@ -1,8 +1,16 @@
-<h2>All Shipments</h2>
+<h2>All Boats</h2>
 
 <% @boats.each do |t| %>
 	<p>Shipment Name:<%= t.name %></p>
 	<p># of Containers: <%= t.containermax %></p>
 	<p>Location: <%= t.location %></p>
 	<p>Shipment Owner: <%= t.user.username %></p>
+		<%= link_to "Show Details", boat_path(t) %>
+	<% if t.user == current_user %>
+				&#9875;
+			<%= link_to "Edit Boat", edit_boat_path(t) %>
+				&#9875;
+			<%= link_to "Delete Boat", t, method: :delete %>
+		<% end %>
+		<hr>
 <% end %>
