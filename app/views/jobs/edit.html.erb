@@ -1,4 +1,15 @@
 <h2>Edit Job</h2>
+
+	<% if @job.errors.full_messages.any? %>
+		<ul>
+			<% @job.errors.full_messages.each do |e| %>
+				<li> <%= e %></li>
+				<li><br></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+
 	<%= form_for [@boat, @job] do |t| %>
 		<%= t.label :name %>
 		<%= t.text_field :name %>

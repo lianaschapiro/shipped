@@ -37,6 +37,7 @@
 <!-- If there are no boats, it will say so -->
 <% else %>
 	<p>No boats yet...</p>
+	<hr>
 <% end %>
 
 <!-- User can only add boats on their own profile page -->
@@ -47,21 +48,22 @@
 				<ul>
 					<% @boat.errors.full_messages.each do |e| %>
 						<li> <%= e %></li>
+						<li><br></li>
 					<% end %>
 				</ul>
 			<% end %>
 
 
 	<%= form_for @boat do |t| %>
-		<%= t.label "name:" %>
+		<h3><%= t.label "name:" %></h3>
 		<%= t.text_field :name %>
 		<br><br>
-		<%= t.label "number of containers:" %>
+		<h3><%= t.label "number of containers:" %></h3>
 		<%= t.select :containermax, (1..100), prompt: :select %>
 		<br><br>
-		<%= t.label "current location:" %>
+		<h3><%= t.label "current location:" %></h3>
 		<%= t.select :location, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
-		<br><br>
+		<br><br><br>
 		<%= t.submit :create %>
 	<% end %>
 <%end%>

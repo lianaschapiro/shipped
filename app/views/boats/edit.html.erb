@@ -1,12 +1,24 @@
-<h1>Edit Boat Details</h1>
+<h2>Edit Boat Details</h2>
+
+<% if @boat.errors.full_messages.any? %>
+	<ul>
+		<% @boat.errors.full_messages.each do |e| %>
+			<li> <%= e %></li>
+			<li><br></li>
+		<% end %>
+	</ul>
+<% end %>
 
 
 <%= form_for @boat do |t| %>
-	<h3><%= t.label :name %></h3>
+	<h3><%= t.label "name:" %></h3>
 	<%= t.text_field :name %>
-	<h3><%= t.label :number_of_containers %></h3>
-	<%= t.text_field :containermax %>
-	<h3><%= t.label :location %></h3>
-	<%= t.text_field :location %>
+	<br><br>
+	<h3><%= t.label "number of containers:" %></h3>
+	<%= t.select :containermax, (1..100), prompt: :select %>
+	<br><br>
+	<h3><%= t.label "current location:" %><h3>
+	<%= t.select :location, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
+	<br><br><br>
 	<%= t.submit :update %>
 <% end %>

@@ -30,9 +30,13 @@ class JobsController < ApplicationController
 		@boat = Boat.find(params[:boat_id])
 	  	@job = Job.find(params[:id])
 		@job.update(job_params)
-		@job.save
-		flash[:notice] = "Thanks for editing"
-		redirect_to boat_path(@boat)
+		if @job.save
+			flash[:notice] = "Thanks for editing"
+			redirect_to boat_path(@boat)
+		else
+			flash[:notice] = "Unable to edit job"
+			render "edit"
+		end
 	end
 
 	def destroy

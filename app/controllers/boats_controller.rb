@@ -16,10 +16,10 @@ class BoatsController < ApplicationController
     @user = current_user
     @boat = current_user.boats.build(boat_params)
     if @boat.save
-      flash[:notice] = "Shipment created"
+      flash[:notice] = "Boat created"
       redirect_to user_path(current_user)
     else
-      flash[:notice] = "Unable to create shipment"
+      flash[:notice] = "Unable to create boat"
       render 'users/show'
     end
   end
@@ -31,9 +31,12 @@ class BoatsController < ApplicationController
   def update
     @boat = Boat.find(params[:id])
     @boat.update(boat_params)
-    @boat.save
-    flash[:notice] = "Shipment details changed"
-    redirect_to user_path(current_user)
+    if @boat.save
+      flash[:notice] = "Boat details changed"
+    else
+      flash[:notice] = "Unable to edit boat details"
+      render 'edit'
+    end
   end
 
   def destroy
