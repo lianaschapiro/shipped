@@ -4,7 +4,6 @@
 	<p><b># of Containers:</b> <%= @boat.containermax %></p>
 	<p><b>Location:</b> <%= @boat.location %></p>
 	<p><b>Boat Owner:</b> <%= @boat.user.username %></p>
-	<hr>
 	<!-- User can only edit / delete their own boats -->
 	<% if @boat.user == current_user %>
 		<%= link_to "Edit Boat", edit_boat_path(@boat) %>
@@ -18,10 +17,12 @@
 		<% @boat.jobs.each do |t| %>
 			<% unless t.new_record? %>
 				<p><%= t.name %></p>
+				<%= link_to "Job Details", boat_job_path(@boat, t) %>
+				<hr>
 			<% end %>
 		<%end %>
 	<% else %>
-		<p>No current jobs</p>
+		<p>No current jobs</p> 
 		<hr>
 	<% end %>
 
@@ -46,6 +47,9 @@
 				<br><br>
 				<%= t.label "cost (in $):" %>
 				<%= t.text_field :cost, placeholder: "Minimum $1000" %>
+				<br><br>
+				<%= t.label "containers needed:" %>
+				<%= t.select :containers_needed, (1..100), prompt: :select %>
 				<br><br>
 				<%= t.label "origin:" %>
 				<%= t.select :origin, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>

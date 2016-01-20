@@ -2,18 +2,21 @@
 	<%= form_for [@boat, @job] do |t| %>
 		<%= t.label :name %>
 		<%= t.text_field :name %>
-		<br>
+		<br><br>
 		<%= t.label :description %>
 		<%= t.text_field :description, placeholder: :minimum_50_characters %>
-		<br>
+		<br><br>
 		<%= t.label "cost (in $)" %>
 		<%= t.text_field :cost, placeholder: "Minimum $1000" %>
-		<br>
+		<br><br>
+		<%= t.label "containers needed:" %>
+		<%= t.select :containers_needed, (1..100), prompt: :select %>
+		<br><br>
 		<%= t.label :origin %>
 		<%= t.select :origin, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
-		<br>
+		<br><br>
 		<%= t.label :destination %>
 		<%= t.select :destination, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
-		<br>
+		<br><br>
 		<%= t.submit :update %>
 	<% end %>

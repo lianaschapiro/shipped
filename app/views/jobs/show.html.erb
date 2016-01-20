@@ -1,0 +1,11 @@
+<h2>Job Details</h2>
+
+	<p><b>Name:</b> <%= @job.name %></p>
+
+	<p><b>Name:</b> <%= @job.description %></p>
+	<p><b>Cost:</b> $<%= @job.cost %></p>
+	<p><b>Containers:</b> <%= @job.containers_needed %></p>
+	<p><b>Origin:</b> <%= @job.origin %></p>
+	<p><b>Destination:</b> <%= @job.destination %></p>
+	<%= link_to "Edit Job", edit_boat_job_path(@boat, @job) %>
+	<hr>
