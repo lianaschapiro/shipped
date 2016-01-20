@@ -1,0 +1,19 @@
+<h2>Edit Job</h2>
+	<%= form_for [@boat, @job] do |t| %>
+		<%= t.label :name %>
+		<%= t.text_field :name %>
+		<br>
+		<%= t.label :description %>
+		<%= t.text_field :description, placeholder: :minimum_50_characters %>
+		<br>
+		<%= t.label "cost (in $)" %>
+		<%= t.text_field :cost, placeholder: "Minimum $1000" %>
+		<br>
+		<%= t.label :origin %>
+		<%= t.select :origin, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
+		<br>
+		<%= t.label :destination %>
+		<%= t.select :destination, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
+		<br>
+		<%= t.submit :update %>
+	<% end %>

@@ -1,5 +1,5 @@
-<h1>Welcome to Shipped</h1>
-
+<h2>Welcome to Shipped</h2>
+<hr>
 <h2>Please Log In:</h2>
 <%= form_tag log_in_path do %>
 <h3><%= label_tag(:username) %></h3>
@@ -10,4 +10,4 @@
 <%= submit_tag("Log In") %>
 <% end %>
 
-<h3>Or <%= link_to "sign up here", new_user_path %> </h3>
+<h3>Or sign up <%= link_to "here", new_user_path %> </h3>

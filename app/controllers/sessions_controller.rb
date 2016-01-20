@@ -19,8 +19,8 @@ class SessionsController < ApplicationController
 	if @user
 		session[:user_id] = nil
 		flash[:notice] = "Come back again soon!"
+    redirect_to root_path
 	end
-	redirect_to root_path
   end
 
 

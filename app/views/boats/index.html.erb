@@ -1,10 +1,11 @@
 <h2>All Boats</h2>
 
 <% @boats.each do |t| %>
-	<p>Shipment Name:<%= t.name %></p>
-	<p># of Containers: <%= t.containermax %></p>
-	<p>Location: <%= t.location %></p>
-	<p>Shipment Owner: <%= t.user.username %></p>
+	<hr>
+	<p><b>Shipment Name:</b> <%= t.name %></p>
+	<p><b># of Containers:</b> <%= t.containermax %></p>
+	<p><b>Current Location:</b> <%= t.location %></p>
+	<p><b>Shipment Owner:</b> <%= t.user.username %></p>
 		<%= link_to "Show Details", boat_path(t) %>
 	<% if t.user == current_user %>
 				&#9875;
@@ -12,5 +13,4 @@
 				&#9875;
 			<%= link_to "Delete Boat", t, method: :delete %>
 		<% end %>
-		<hr>
 <% end %>

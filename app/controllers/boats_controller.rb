@@ -13,13 +13,14 @@ class BoatsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @boat = current_user.boats.build(boat_params)
     if @boat.save
       flash[:notice] = "Shipment created"
       redirect_to user_path(current_user)
     else
       flash[:notice] = "Unable to create shipment"
-      redirect_to user_path(current_user)
+      render 'users/show'
     end
   end
 

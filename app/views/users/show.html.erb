@@ -22,7 +22,7 @@
 	<% @user.boats.each do |t| %>
 		<p><b>Boat Name:</b> <%= t.name %></p>
 		<p><b># of Containers:</b> <%= t.containermax %></p>
-		<p><b>Location:</b> <%= t.location %></p>
+		<p><b>Current Location:</b> <%= t.location %></p>
 		<p><b>Boat Owner:</b> <%= t.user.username %></p>
 			<%= link_to "Show Details", boat_path(t) %>
 		<!-- User can only edit / delete boats on their own profile page -->
@@ -42,16 +42,28 @@
 <!-- User can only add boats on their own profile page -->
 <% if @user == current_user %>
 	<h2>Add New Boat</h2>
+
+<% if @boat.errors.full_messages.any? %>
+				<ul>
+					<% @boat.errors.full_messages.each do |e| %>
+						<li> <%= e %></li>
+					<% end %>
+				</ul>
+			<% end %>
+
+
+
+
 	<%= form_for @boat do |t| %>
-		<%= t.label :name %>
+		<%= t.label "name:" %>
 		<%= t.text_field :name %>
-		<br>
-		<%= t.label :number_of_containers %>
-		<%= t.text_field :containermax %>
-		<br>
-		<%= t.label :location %>
-		<%= t.text_field :location %>
-		<br>
+		<br><br>
+		<%= t.label "number of containers:" %>
+		<%= t.select :containermax, (1..100), prompt: :select %>
+		<br><br>
+		<%= t.label "current location:" %>
+		<%= t.select :location, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
+		<br><br>
 		<%= t.submit :create %>
 	<% end %>
 <%end%>

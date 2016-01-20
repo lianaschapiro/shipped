@@ -5,8 +5,14 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+	<% if flash[:notice] %>
+			<p id="flash"><%= flash[:notice] %></p>
+	<% end %>
+
 	<header>
 		<% if current_user %>
 		<nav>
@@ -22,10 +28,6 @@
 		<% end %>
 		<h1>SHIPSTER</h1>
 	</header>
-
-	<% if flash[:notice] %>
-		<p id="flash"><%= flash[:notice] %></p>
-	<% end %>
 
 	<div class="main">
 		<%= yield %>
