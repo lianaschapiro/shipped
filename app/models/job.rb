@@ -4,6 +4,7 @@ class Job < ActiveRecord::Base
 
 
   validates_presence_of :name, :cost, :description, :origin, :destination, :containers_needed
+  validates :name, uniqueness: true
   validates :description, length: {minimum: 50}
   validates :cost, numericality: {greater_than: 1000.00}
   validates :origin, inclusion: {in: ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"]}
