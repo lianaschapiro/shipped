@@ -9,7 +9,7 @@
 	</ul>
 <% end %>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => { :multipart => true } do |f| %>
 	<h3><%=f.label :first_name %></h3>
 	<%=f.text_field :fname %>
 	<br><br>
@@ -24,6 +24,9 @@
 	<br><br>
 	<h3><%=f.label "password*" %></h3>
 	<%=f.password_field :password %>
+	<br><br><br>
+	<h3><%=f.label "profile picture" %></h3>
+	<%= f.file_field :avatar %>
 	<br><br><br>
 	<%=f.submit %>
 <% end %>

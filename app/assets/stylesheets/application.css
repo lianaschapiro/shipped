@@ -68,6 +68,13 @@ hr {
  margin: 10px auto 10px;
 }
 
+img {
+ height: 200px;
+ border-radius: 10px;
+ border: solid 3px black;
+ margin: 5px;
+ }
+
 .main {
 	padding: 20px 0px 30px;
 	width: 75%;

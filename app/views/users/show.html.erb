@@ -9,6 +9,9 @@
 	<p><b>Name:</b> <%= @user.fname %> <%= @user.lname %><p>
 	<p><b>Email:</b> <%= @user.email %></p>
 	<p><b>Member Since:</b> <%= @user.created_at.strftime(" %B %d, %Y")%></p>
+	<%= image_tag @user.avatar.url(:medium) %>
+	<br>
+	<%= link_to "[Edit My Account]", edit_user_path(@user) %>
 	<hr>
 
 <!-- User's boats-->
