@@ -10,7 +10,7 @@
 <% end %>
 
 
-<%= form_for @boat do |t| %>
+<%= form_for @boat :html => { :multipart => true } do |t| %>
 	<h3><%= t.label "name:" %></h3>
 	<%= t.text_field :name %>
 	<br><br>

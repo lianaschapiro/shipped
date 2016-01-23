@@ -12,6 +12,7 @@
 		<hr>
 	<% end %>
 
+<!-- List of jobs for each boat -->
 <h2>Jobs:</h2>
 	<% if @boat.jobs != [] %>
 		<% @boat.jobs.each do |t| %>
@@ -26,6 +27,7 @@
 		<hr>
 	<% end %>
 
+	<!-- If the user owns the boat, they can create a new job for it -->
 	<% if @boat.user == current_user %>
 		<h2>Create New Job</h2>
 
