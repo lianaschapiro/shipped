@@ -20,5 +20,8 @@
 	<h3><%= t.label "current location:" %><h3>
 	<%= t.select :location, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
 	<br><br><br>
+	<h3><%=t.label "picture" %></h3>
+		<%= t.file_field :avatar %>
+	<br><br><br>
 	<%= t.submit :update %>
 <% end %>

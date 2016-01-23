@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
  
+  post 'userfollowboats/create', to: 'userfollowboats#create', as: 'userfollowboats'
+
+  delete 'userfollowboats/destroy', to: 'userfollowboats#destroy', as: 'userfollowboat'
+
   root 'home#home'
 
   get '/log-in' => 'sessions#new'

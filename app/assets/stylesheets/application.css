@@ -75,6 +75,10 @@ img {
  margin: 5px;
  }
 
+ #userpic {
+ 	height:100px;
+ }
+
 .main {
 	padding: 20px 0px 30px;
 	width: 75%;

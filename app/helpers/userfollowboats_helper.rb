@@ -1,0 +1,2 @@
+module UserfollowboatsHelper
+end

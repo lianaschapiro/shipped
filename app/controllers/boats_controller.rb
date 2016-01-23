@@ -1,6 +1,7 @@
 class BoatsController < ApplicationController
   def index
     @boats = Boat.all
+    @user = current_user
   end
 
   def show
@@ -51,6 +52,6 @@ class BoatsController < ApplicationController
 
    private
     def boat_params
-      params.require(:boat).permit(:name, :location, :containermax)
+      params.require(:boat).permit(:name, :location, :containermax, :avatar)
     end
 end

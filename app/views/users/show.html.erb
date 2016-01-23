@@ -9,7 +9,7 @@
 	<p><b>Name:</b> <%= @user.fname %> <%= @user.lname %><p>
 	<p><b>Email:</b> <%= @user.email %></p>
 	<p><b>Member Since:</b> <%= @user.created_at.strftime(" %B %d, %Y")%></p>
-	<%= image_tag @user.avatar.url(:medium) %>
+	<%= image_tag @user.avatar.url(:medium), id: :userpic %>
 	<br>
 	<%= link_to "[Edit My Account]", edit_user_path(@user) %>
 	<hr>
@@ -27,6 +27,8 @@
 		<p><b># of Containers:</b> <%= t.containermax %></p>
 		<p><b>Current Location:</b> <%= t.location %></p>
 		<p><b>Boat Owner:</b> <%= t.user.username %></p>
+		<%= image_tag t.avatar.url(:medium) %>
+		<br>
 			<%= link_to "Show Details", boat_path(t) %>
 		<!-- User can only edit / delete boats on their own profile page -->
 		<% if @user == current_user %>
@@ -66,6 +68,9 @@
 		<br><br>
 		<h3><%= t.label "current location:" %></h3>
 		<%= t.select :location, ["Bermuda", "Dakar", "Miami", "New York City", "Panama", "Trinidad"], prompt: :select %>
+		<br><br><br>
+		<h3><%=t.label "boat picture" %></h3>
+		<%= t.file_field :avatar %>
 		<br><br><br>
 		<%= t.submit :create %>
 	<% end %>
