@@ -2,10 +2,10 @@
 
 <% @boats.each do |t| %>
 	<hr>
-	<p><b>Shipment Name:</b> <%= t.name %></p>
+	<p><b>Boat Name:</b> <%= t.name %></p>
 	<p><b># of Containers:</b> <%= t.containermax %></p>
 	<p><b>Current Location:</b> <%= t.location %></p>
-	<p><b>Shipment Owner:</b> <%= t.user.username %></p>
+	<p><b>Boat Owner:</b> <%= t.user.username %></p>
 	<%= image_tag t.avatar.url(:medium) %>
 	<br>
 		<%= link_to "Show Details", boat_path(t) %>
