@@ -20,7 +20,7 @@
 }
 
 body {
-	background-image: url("/assets/shipping.jpg");
+	background-image: url("shipping.jpg");
 	background-size: 100%;
 	background-attachment: fixed;
 }
